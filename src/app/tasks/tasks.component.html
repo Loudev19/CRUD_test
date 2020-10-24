@@ -28,7 +28,7 @@
           <tbody  *ngIf="data.count > 0" class="text-black-50">
               <tr *ngFor="let task of data.data; index as i">
                   <th class="align-middle" scope="row">{{i + 1}}</th>
-                  <td class="align-middle"></td>
+                  <td class="align-middle"><input type="checkbox" id="completed" [(ngModel)]="task.completed" (change)="updateComplete(task.completed?'A':'B', i)"></td>
                   <td class="align-middle">{{task.description}}</td>
                   <td>
                     <a (click)="updateIt(i)" data-toggle="modal" data-target="#login-modal" class="btn btn-primary align-center mr-1">Editar</a>

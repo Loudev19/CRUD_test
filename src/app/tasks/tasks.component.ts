@@ -90,6 +90,31 @@ export class TasksComponent implements OnInit {
     )
   }
 
+  updateComplete(event: any, index) {
+    switch (event) {
+      case "A":
+        this.tasks.updateTask(this.data.data[index]._id, { "completed": true }).subscribe(
+          res => {
+            console.log(res);
+          },
+          error => {
+            console.log(error);
+          }
+        )
+        break;
+      case "B":
+        this.tasks.updateTask(this.data.data[index]._id, { "completed": false }).subscribe(
+          res => {
+            console.log(res);
+          },
+          error => {
+            console.log(error);
+          }
+        )
+        break;
+    }
+  }
+
   deleteTask(id) {
     this.tasks.deleteTask(this.data.data[id]._id).subscribe(
       res => {
