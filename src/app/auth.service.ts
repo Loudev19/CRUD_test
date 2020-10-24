@@ -28,10 +28,10 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('token');
     const headers: HttpHeaders = new HttpHeaders({
       Authorization: `Bearer ${localStorage.getItem('token')}`
     });
+    localStorage.removeItem('token');
     return this.http.post<any>(this._logoutUrl, { headers: headers });
   }
 
@@ -47,5 +47,13 @@ export class AuthService {
       Authorization: `Bearer ${localStorage.getItem('token')}`
     });
     return this.http.put(this._userIdUrl, user, { headers: headers });
+  }
+
+  deleteUser() {
+    const headers: HttpHeaders = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    });
+    localStorage.removeItem('token');
+    return this.http.delete(this._userIdUrl, { headers: headers });
   }
 }
