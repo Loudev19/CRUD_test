@@ -68,6 +68,7 @@ export class TasksComponent implements OnInit {
     this.tasks.newTask(this.createTaskData).subscribe(
       res => {
         console.log(res);
+        this.getAllTasks();
       },
       error => {
         console.log(error);
@@ -80,6 +81,7 @@ export class TasksComponent implements OnInit {
     this.tasks.updateTask(this.data.data[this.index]._id, this.updateTaskDescription).subscribe(
       res => {
         console.log(res);
+        this.getAllTasks();
         this.closeModal.nativeElement.click();
       },
       error => {
@@ -92,6 +94,7 @@ export class TasksComponent implements OnInit {
     this.tasks.deleteTask(this.data.data[id]._id).subscribe(
       res => {
         console.log(res);
+        this.getAllTasks();
       },
       error => {
         console.log(error);
