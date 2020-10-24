@@ -1,0 +1,42 @@
+<div class="card container-fluid shadow border-0">
+  
+    <div class="row justify-align-content-between w-100 p-2">
+        <div class="col-3">
+            <select class="custom-select border-primary align-middle">
+                <option selected>Todos</option>
+                <option value="1">Completados</option>
+            </select>
+        </div>
+        <div class="col-9 row justify-content-end">
+            <div class="w-50 mr-1">            
+              <input width="50" class="form-control border-primary" [(ngModel)]="createTaskData.description" type="text" class="form-control" id="Description" name="Description" placeholder="Description">
+            </div>
+            <button (click)="addTask()" type="submit" class="btn btn-primary">Añadir nuevo</button>
+        </div>
+    </div>
+  
+  <div class="p-3 bg-white" style="border-radius: .75rem;">
+      <table class="table table-borderless">
+          <thead>
+              <tr>
+                  <th scope="col">#</th>
+                  <th scope="col"></th>
+                  <th scope="col">Descripción</th>
+                  <th scope="col"></th>
+              </tr>
+          </thead>
+          <tbody  *ngIf="data.count > 0" class="text-black-50">
+              <tr *ngFor="let task of data.data; index as i">
+                  <th class="align-middle" scope="row">{{i + 1}}</th>
+                  <td class="align-middle"></td>
+                  <td class="align-middle">{{task.description}}</td>
+                  <td>
+                    <a class="btn btn-primary align-center mr-1">Editar</a>
+                    <a class="btn btn-danger align-center">Borrar</a>
+                   </td>
+              </tr>
+          </tbody>
+          <div *ngIf="data.count == 0" class="text-center">No tienes tareas aun</div>
+      </table>
+  </div>
+</div>
