@@ -1,0 +1,16 @@
+<app-profile></app-profile>
+
+<div class="row justify-content-center">
+    <form action="" class="col-sm-8 col-md-5">
+        <div class="form-group mt-5">
+            <input [(ngModel)]="updateUserData.name" type="text" class="form-control" id="Names" name="Names" 
+                placeholder="Nombres">
+        </div>
+        <div class="form-group mt-2">
+            <input [(ngModel)]="updateUserData.age" type="number" class="form-control" id="Age" name="Age" placeholder="Edad">
+        </div>
+        <div class="form-group mt-5">
+            <button (click)="updateUser()" type="submit" class="btn btn-block btn-danger">Guardar cambios</button>
+        </div>
+    </form>
+</div>
