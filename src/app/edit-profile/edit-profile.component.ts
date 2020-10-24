@@ -16,7 +16,7 @@ export class EditProfileComponent implements OnInit {
 
   errorMessage = "";
 
-  constructor(public _auth: AuthService) { }
+  constructor(public _auth: AuthService, private _router: Router) { }
 
   ngOnInit(): void {
   }
@@ -26,6 +26,20 @@ export class EditProfileComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
+        },
+        err => {
+          this.errorMessage = err;
+          console.log(err);
+        }
+      )
+  }
+
+  deleteUser() {
+    this._auth.deleteUser()
+      .subscribe(
+        res => {
+          console.log(res);
+          this._router.navigate(['/login']);
         },
         err => {
           this.errorMessage = err;
