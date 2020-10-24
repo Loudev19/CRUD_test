@@ -24,6 +24,15 @@ export class TaskService {
     }
   }
 
+  getCompletedTasks() {
+    if (this._auth.loggedIn()) {
+      const headers: HttpHeaders = new HttpHeaders({
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      });
+      return this.http.get<any>(`${this._baseUrl}task?completed=true`, { headers: headers });
+    }
+  }
+
   newTask(task) {
     if (this._auth.loggedIn()) {
       const headers: HttpHeaders = new HttpHeaders({
@@ -33,12 +42,21 @@ export class TaskService {
     }
   }
 
+  updateTask(id, task: any) {
+    if (this._auth.loggedIn()) {
+      const headers: HttpHeaders = new HttpHeaders({
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      });
+      return this.http.put(`${this._taskURL}${id}`, task, { headers: headers });
+    }
+  }
+
   deleteTask(id) {
     if (this._auth.loggedIn()) {
       const headers: HttpHeaders = new HttpHeaders({
         Authorization: `Bearer ${localStorage.getItem('token')}`
       });
-      return this.http.post<any>(`${this._taskURL}id`, { headers: headers });
+      return this.http.delete(`${this._taskURL}${id}`, { headers: headers });
     }
   }
 }
